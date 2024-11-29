@@ -46,17 +46,16 @@ jobs:
         dotnet test --logger "junit;LogFileName=TestResults.xml"   
 
     - name: List directory
-      run: ls RestAPITest
-          
-    # Creates easy to read test summary
-    - name: TestForest Dashboard
-      uses: test-summary/action@v2.4
+      run: ls RestAPITest          
+
+    - name: Test Reporter
+      uses: dorny/test-reporter@v1.9.1
+      if: success() || failure()    # run this step even if previous step failed
       with:
-        paths: "RestAPITest/TestResults/TestResults.xml"
-        show: "all"
-        output: test-summary.md
-      if: always()
-      
+        name: JEST Tests            # Name of the check run which will be created
+        path: RestAPITest/TestResults/TestResults.xml    # Path to test results
+        reporter: jest-junit 
+          
     - name: Upload test summary
       uses: actions/upload-artifact@v4
       with:
