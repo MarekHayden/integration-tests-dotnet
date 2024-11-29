@@ -41,7 +41,7 @@ jobs:
 
     # Execute all unit tests in the solution
     - name: Execute integration tests
-      run: dotnet test --logger "trx;LogFileName=TestResults.xml" 
+      run: dotnet test --logger "junit;LogFileName=TestResults.xml" 
 
     - name: List directory
       run: ls
@@ -50,5 +50,5 @@ jobs:
     - name: TestForest Dashboard
       uses: test-summary/action@v2.4
       with:
-        paths: "RestAPITest/TestResults/TestResults.xml"
+        paths: "RestAPITest/TestResults/**/*.xml"
       if: always()
