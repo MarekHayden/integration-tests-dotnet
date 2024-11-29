@@ -16,10 +16,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      Solution_Name: IntegrationTesting.sln                         # Replace with your solution name, i.e. MyWpfApp.sln.
-      Test_Project_Path: RestAPITest\RestAPITest.csproj               # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
-      Wap_Project_Directory: IntegrationTesting\RestAPI    # Replace with the Wap project directory relative to the solution, i.e. MyWpfApp.Package.
-      Wap_Project_Path: IntegrationTesting\RestAPI.csproj                   # Replace with the path to your Wap project, i.e. MyWpf.App.Package\MyWpfApp.Package.wapproj.
+      Solution_Name: IntegrationTesting.sln                         
+      Test_Project_Path: RestAPITest\RestAPITest.csproj              
+      Wap_Project_Directory: IntegrationTesting\RestAPI    
+      Wap_Project_Path: IntegrationTesting\RestAPI.csproj  
 
     steps:    
     - uses: actions/checkout@v4      
@@ -36,7 +36,7 @@ jobs:
       run: dotnet build ${{ env.Solution_Name }} --configuration Debug --no-restore
           
     - name: Test
-      run: dotnet test ${{ env.Solution_Name }} --logger "trx;LogFileName=TestResults.trx" --no-restore --no-build  
+      run: dotnet test ${{ env.Solution_Name }} --logger "trx;LogFileName=TestResults.trx" --no-restore --no-build  --verbosity normal
 
     - name: Test Reporter
       uses: dorny/test-reporter@v1.9.1
