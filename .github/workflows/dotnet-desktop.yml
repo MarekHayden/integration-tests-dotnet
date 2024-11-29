@@ -51,4 +51,13 @@ jobs:
       uses: test-summary/action@v2.4
       with:
         paths: "RestAPITest/TestResults/TestResults.xml"
+        show: "all"
+        output: test-summary.md
+      if: always()
+      
+    - name: Upload test summary
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-summary
+        path: test-summary.md
       if: always()
