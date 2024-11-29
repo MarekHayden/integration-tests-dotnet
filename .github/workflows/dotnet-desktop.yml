@@ -41,7 +41,9 @@ jobs:
 
     # Execute all unit tests in the solution
     - name: Execute integration tests
-      run: dotnet test --logger "junit;LogFileName=TestResults.xml"   
+      run: |
+        dotnet build
+        dotnet test --logger "junit;LogFileName=TestResults.xml"   
 
     - name: List directory
       run: ls RestAPITest
