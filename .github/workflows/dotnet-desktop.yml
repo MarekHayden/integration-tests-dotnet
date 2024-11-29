@@ -41,7 +41,7 @@ jobs:
 
     # Execute all unit tests in the solution
     - name: Execute integration tests
-      run: dotnet test
+      run: dotnet test --verbosity normal --logger tap
 
     # Creates easy to read test summary
     - name: TestForest Dashboard
