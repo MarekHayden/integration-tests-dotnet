@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using RestAPI;
+using RestAPI.Database.Models;
 using System.Web;
 
 namespace RestAPITest.ControllersTests
@@ -25,7 +25,7 @@ namespace RestAPITest.ControllersTests
             var forecasts = JsonConvert.DeserializeObject<List<WeatherForecast>>(responseContent);
 
             Assert.NotNull(forecasts);
-            Assert.Equal(5, forecasts.Count);
+            Assert.Equal(10, forecasts.Count);
             Assert.True(forecasts.All(f => f.Date != default));
             Assert.True(forecasts.All(f => f.TemperatureC >= -20 && f.TemperatureC <= 55));
         }                
