@@ -46,6 +46,9 @@ jobs:
     # Creates easy to read test summary
     - name: TestForest Dashboard
       uses: test-summary/action@v2.4
+      with:
+        paths: "test/results/**/TEST-*.xml"
+      if: always()
       
     # Restore the application to populate the obj folder with RuntimeIdentifiers
     - name: Restore the application
