@@ -43,7 +43,7 @@ jobs:
     - name: Execute integration tests
       run: |
         dotnet build
-        dotnet test --logger "junit;LogFileName=TestResults.xml"   
+        dotnet test --logger "trx;LogFileName=TestResults.trx"   
 
     - name: List directory
       run: ls RestAPITest          
@@ -52,9 +52,9 @@ jobs:
       uses: dorny/test-reporter@v1.9.1
       if: success() || failure()    # run this step even if previous step failed
       with:
-        name: JEST Tests            # Name of the check run which will be created
-        path: RestAPITest/TestResults/TestResults.xml    # Path to test results
-        reporter: jest-junit 
+        name: Xunit Tests            # Name of the check run which will be created
+        path: RestAPITest/TestResults/TestResults.trx    # Path to test results
+        reporter: dotnet-trx 
           
     - name: Upload test summary
       uses: actions/upload-artifact@v4
