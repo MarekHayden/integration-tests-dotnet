@@ -11,6 +11,6 @@ namespace RestAPITest
             HttpClient = CreateClient();
         }
 
-        public Task DisposeAsync() => Task.CompletedTask;
+        public new Task DisposeAsync() => Task.CompletedTask;
     }
 }

@@ -24,6 +24,7 @@ namespace RestAPITest.ControllersTests
             var responseContent = await response.Content.ReadAsStringAsync();
             var forecasts = JsonConvert.DeserializeObject<List<WeatherForecast>>(responseContent);
 
+            Assert.NotNull(forecasts);
             Assert.Equal(5, forecasts.Count);
             Assert.True(forecasts.All(f => f.Date != default));
             Assert.True(forecasts.All(f => f.TemperatureC >= -20 && f.TemperatureC <= 55));
@@ -41,6 +42,7 @@ namespace RestAPITest.ControllersTests
             var responseContent = await response.Content.ReadAsStringAsync();
             var forecasts = JsonConvert.DeserializeObject<List<WeatherForecast>>(responseContent);
 
+            Assert.NotNull(forecasts);
             Assert.Equal(5, forecasts.Count);
             Assert.True(forecasts.All(f => f.Date != default));
             Assert.True(forecasts.All(f => f.TemperatureC >= -20 && f.TemperatureC <= 55));
