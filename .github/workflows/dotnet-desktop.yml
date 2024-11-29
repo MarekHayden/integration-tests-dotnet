@@ -47,5 +47,5 @@ jobs:
     - name: TestForest Dashboard
       uses: test-summary/action@v2.4
       with:
-        paths: "TestResults/TestResults.xml"
+        paths: "TestResults.xml"
       if: always()
