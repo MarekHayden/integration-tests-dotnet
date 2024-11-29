@@ -43,6 +43,10 @@ jobs:
     - name: Execute integration tests
       run: dotnet test
 
+    # Creates easy to read test summary
+    - name: TestForest Dashboard
+      uses: test-summary/action@v2.4
+      
     # Restore the application to populate the obj folder with RuntimeIdentifiers
     - name: Restore the application
       run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration
