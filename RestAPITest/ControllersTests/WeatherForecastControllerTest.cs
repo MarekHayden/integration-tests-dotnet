@@ -13,7 +13,7 @@ namespace RestAPITest.ControllersTests
         }
 
         [Fact]
-        public async Task Get()
+        public async Task Get_ShouldReturnForecasts_WhenDataValid()
         {
             var uriBuilder = new UriBuilder("https://localhost:7059/WeatherForecast");
             var query = HttpUtility.ParseQueryString(uriBuilder.Query);
