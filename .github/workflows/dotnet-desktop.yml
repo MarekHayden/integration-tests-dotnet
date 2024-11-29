@@ -51,6 +51,7 @@ jobs:
       uses: test-summary/action@v2.4
       with:
         paths: "RestAPITest/TestResults/TestResults.xml"
+        show: "all"
         output: test-summary.md
       if: always()
       
