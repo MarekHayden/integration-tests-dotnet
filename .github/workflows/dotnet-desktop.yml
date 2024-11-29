@@ -41,11 +41,11 @@ jobs:
 
     # Execute all unit tests in the solution
     - name: Execute integration tests
-      run: dotnet test --verbosity normal --logger tap
+      run: dotnet test --logger "trx;LogFileName=TestResults.xml"
 
     # Creates easy to read test summary
     - name: TestForest Dashboard
       uses: test-summary/action@v2.4
       with:
-        paths: "test/results/**/TEST-*.xml"
+        paths: "TestResults/TestResults.xml"
       if: always()
